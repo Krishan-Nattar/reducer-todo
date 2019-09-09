@@ -1,25 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useReducer, useEffect} from 'react';
+import {Segment} from 'semantic-ui-react';
 import './App.css';
+import {initialState, todoReducer} from './reducers/todoReducer';
+import Todo from './components/Todo';
+import Form from './components/Form';
+
 
 function App() {
+  const [state, dispatch] = useReducer(todoReducer, initialState);
+  
+  // console.log(state);
   return (
+    
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Segment stacked className="segment">
+      What do I need to do...?
+      <Form dispatch={dispatch}/>
+      <Todo data={state} dispatch={dispatch} />
+      </Segment>
     </div>
+    
   );
 }
 
