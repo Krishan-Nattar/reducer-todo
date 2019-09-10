@@ -1,10 +1,4 @@
-export const initialState = [
-    {
-      item: null,
-      completed: false,
-      id: 3892987589
-    }
-  ];
+export const initialState = [];
   
   export const todoReducer = (state, action) => {
     switch (action.type) {
